@@ -1,0 +1,20 @@
+{
+    "users": [
+        {
+            "email": "hameedurrehman35@gmail.com",
+            "password": "hameed786"
+        },
+        {
+            "email": "hameedurrehman@gmail.com",
+            "password": "hameed"
+        },
+        {
+            "email": "hameed@gmail.com",
+            "password": "ham"
+        },
+        {
+            "email": "hur@gmail.com",
+            "password": "hameed78"
+        }
+    ]
+}
