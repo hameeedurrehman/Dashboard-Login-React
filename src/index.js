@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from "@material-tailwind/react";
+import { AuthProvider } from './context/AuthContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +13,9 @@ root.render(
   <React.StrictMode>
     <Router>
     <ThemeProvider>
+      <AuthProvider>
         <App />
+      </AuthProvider>
     </ThemeProvider>
     </Router>
   </React.StrictMode>

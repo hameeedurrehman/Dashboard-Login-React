@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import db from '../db.json';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext'
 
 function LoginPage() {
-    const [ email, setEmail ] = useState()
-    const [ password, setPassword ] = useState()
-    const [ inValid, setInValid ] = useState()
+    const { setIsAuthenticated } = useAuth();
+
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const [inValid, setInValid] = useState()
     let navigate = useNavigate();
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -15,14 +18,17 @@ function LoginPage() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-            db.users.filter(user => {
-            if(user.email === email && user.password === password){
+        db.users.filter(user => {
+            if (user.email === email && user.password === password) {
+                setIsAuthenticated(true)
                 console.log("email and password matched")
                 navigate("/dashboard");
+                return true
             } else {
                 setInValid("Invalid Email or Password")
+                return false
             }
-    })
+        })
     }
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -43,7 +49,7 @@ function LoginPage() {
                             <label for="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
                         </div>
                         <div className="mt-2">
-                            <input onChange={handlePassword} id="password" name="password" type="password" autocomplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            <input onChange={handlePassword} id="password" name="password" type="text" autocomplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                     </div>
                     {inValid ? <div>{inValid}</div> : ""}
