@@ -27,39 +27,49 @@ const SideBar = () => {
         </Typography>
       </div>
       <List>
+      <Link to="/aboutus">
         <ListItem>
           <ListItemPrefix>
             <ShoppingBagIcon className="h-5 w-5" />
           </ListItemPrefix>
-          <Link to="/e-commerce">E-Commerce</Link>
+          About Us
         </ListItem>
+        </Link>
+        <Link to="/messages">
         <ListItem>
           <ListItemPrefix>
             <InboxIcon className="h-5 w-5" />
           </ListItemPrefix>
-          <Link to="/inbox">Inbox</Link>
+          Inbox
           <ListItemSuffix>
             <Chip value="10" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
           </ListItemSuffix>
         </ListItem>
+        </Link>
+        <Link to="/profile">
         <ListItem>
           <ListItemPrefix>
             <UserCircleIcon className="h-5 w-5" />
           </ListItemPrefix>
-          <Link to="/profile">Profile</Link>
+          Profile
         </ListItem>
+        </Link>
+        <Link to="/settings">
         <ListItem>
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />
           </ListItemPrefix>
-          <Link to="/settings">Settings</Link>
+          Settings
         </ListItem>
+        </Link>
+        <Link to="/">
         <ListItem>
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>
-          <Link to="/">Log Out</Link>
+          Log Out
         </ListItem>
+        </Link>
       </List>
     </Card>
   );
