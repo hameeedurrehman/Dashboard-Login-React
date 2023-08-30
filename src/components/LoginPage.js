@@ -13,7 +13,6 @@ function LoginPage() {
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
-    console.log(email);
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
