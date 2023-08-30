@@ -4,7 +4,10 @@ import Header from '../components/dashboard/Header'
 
 function Dashboard() {
   return (
-    <div><Header/><SideBar /></div>
+    <div>
+      <Header/>
+      <SideBar />
+    </div>
   )
 }
 
