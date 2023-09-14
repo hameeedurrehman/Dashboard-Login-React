@@ -23,10 +23,8 @@ function LoginPage() {
                 setIsAuthenticated(true)
                 console.log("email and password matched")
                 navigate("/dashboard");
-                return true
             } else {
                 setInValid("Invalid Email or Password")
-                return false
             }
         })
     }

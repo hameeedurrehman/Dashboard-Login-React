@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import PrivateRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 import { AuthenticUser } from './context/AuthContext';
 import AboutUs from './pages/AboutUs';
 import Messages from './pages/Messages';
@@ -13,7 +13,7 @@ function App() {
     <AuthenticUser>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/' element={<PrivateRoute />}>
+        <Route path='/' element={<ProtectedRoute />}>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/messages' element={<Messages />} />
