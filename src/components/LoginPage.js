@@ -6,22 +6,22 @@ import { useAuth } from '../context/AuthContext'
 function LoginPage() {
     const { setIsAuthenticated } = useAuth();
 
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const [inValid, setInValid] = useState()
+    const [state, setState] = useState({
+        email: '',
+        password: '',
+    })
+    const [inValid, setInValid] = useState('')
+
     let navigate = useNavigate();
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
-    }
-    const handlePassword = (e) => {
-        setPassword(e.target.value)
+
+    const handleChange = (e) => {
+        setState({...state, [e.target.name] : e.target.value})
     }
     const handleSubmit = (e) => {
         e.preventDefault()
         db.users.filter(user => {
-            if (user.email === email && user.password === password) {
+            if (user.email === state.email && user.password === state.password) {
                 setIsAuthenticated(true)
-                console.log("email and password matched")
                 navigate("/dashboard");
             } else {
                 setInValid("Invalid Email or Password")
@@ -39,7 +39,7 @@ function LoginPage() {
                     <div>
                         <label for="email" className="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                         <div className="mt-2">
-                            <input onChange={handleEmail} id="email" name="email" type="email" autocomplete="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            <input onChange={handleChange} id="email" name="email" type="email" autocomplete="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                     </div>
                     <div>
@@ -47,7 +47,7 @@ function LoginPage() {
                             <label for="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
                         </div>
                         <div className="mt-2">
-                            <input onChange={handlePassword} id="password" name="password" type="password" autocomplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            <input onChange={handleChange} id="password" name="password" type="password" autocomplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                     </div>
                     {inValid ? <div>{inValid}</div> : ""}
